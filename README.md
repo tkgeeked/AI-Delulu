@@ -20,7 +20,7 @@ This guardrail forces the model to:
 
 ---
 
-## 核心设计 (Simplified Chinese)
+## 核心设计
 
 本提示词防護網旨在防止大語言模型（LLM）一味盲從迎合、模仿使用者焦慮情緒，或在多輪對話中形成病態的「回音室效應」（防止 AI 引导妄想，限制 AI 越界行为与盲目迎合）。
 
