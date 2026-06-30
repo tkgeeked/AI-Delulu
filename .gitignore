@@ -1,0 +1,6 @@
+# Ignore local configuration and raw research files
+.agents/
+.DS_Store
+*.rtf
+AI 聊天機器人容易助長妄想*
+anti-delusion-skill.md
