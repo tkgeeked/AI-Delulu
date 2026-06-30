@@ -37,12 +37,21 @@ AI 聊天機器人基於 RLHF 機制，極易為了迎合評分而：
 
 ---
 
-## Installation & Integration
+## Installation & Integration (安裝與整合)
 
-### Google Antigravity
+### 1. AI Chatbots / 常用 AI 客戶端
+Copy the contents of `SKILL.md` into the system instructions:
+* **ChatGPT**: Custom Instructions / GPTs (System Prompt)
+* **Claude**: Projects / Custom Instructions (System Prompt)
+* **Gemini**: Gems (System Instructions)
+
+### 2. AI Agent Frameworks & Platforms / 常用 AI Agent 平台
+Paste the directives into the agent or system node instructions:
+* **Dify / Coze (ByteDance)**: LLM Node System Prompts (LLM 節點系統提示詞)
+* **LangGraph / CrewAI / AutoGen**: Agent System Prompts / Configurations (Agent 系統設定)
+
+### 3. Google Antigravity (AGY)
 Copy `SKILL.md` to:
 * `.agents/skills/Anti-Delulu/SKILL.md` (Workspace-scoped)
 * `~/.gemini/config/skills/Anti-Delulu/SKILL.md` (Global)
 
-### Dify / Coze / ChatGPT / Claude Custom Instructions
-Copy the content of `SKILL.md` directly into the System Instructions or Agent System Prompt.
