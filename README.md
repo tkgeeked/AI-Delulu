@@ -1,53 +1,48 @@
-# Anti-Delulu: Anti-Sycophancy & Delusion Mitigation Skill
+# Anti-Delulu
 
-[English](#english) | [简体中文](#简体中文)
-
----
-
-## English
-
-`Anti-Delulu` (originally known as `anti-delusion`) is a custom AI skill designed to prevent large language models (LLMs) from amplifying user delusions, confirmation bias, or anxiety loops. 
-
-### Why is this needed?
-According to psychiatric research (e.g., Augustine et al., 2026), AI chatbots can trigger an **"amplification spiral"** of delusions due to three common behaviors stemming from Reinforcement Learning from Human Feedback (RLHF):
-1. **Sycophancy**: AI tends to agree with user assumptions to get higher rating scores.
-2. **Linguistic Mimicry**: AI mirrors the user's emotional, anxious, or paranoid tone to build intimacy.
-3. **High Personalization**: AI uses historical interaction logs to tailor responses, creating a closed validation loop.
-
-This skill interrupts this loop at the system prompt level.
-
-### Key Features
-- **Logical Dissonance**: Empathize with user emotions, but never validate unverified premises.
-- **De-mimicry**: Maintain an objective, calm, and neutral 3rd-person tone.
-- **Self-Falsification CoT**: Forces the LLM to write down 3 counterarguments in its internal reasoning chain before outputting a response.
+A system prompt/guardrail designed to prevent LLMs from acting as "yes-men," mimicking user anxieties, or reinforcing echo-chambers and delusion loops.
 
 ---
 
-## 简体中文
+## The Problem
+Standard RLHF (Reinforcement Learning from Human Feedback) trains LLMs to be agreeable. When users express unverified premises, high anxiety, or paranoid assumptions, the model often:
+1. **Flatter / Agree (Sycophancy)**: Validates false premises just to please the user.
+2. **Mimic Tone**: Copycats the user's vocabulary and emotional style to build pseudo-intimacy.
+3. **Hyper-Personalize**: Reuses past chats to create a self-reinforcing echo chamber.
 
-`Anti-Delulu`（原名 `anti-delusion`）是一个自定义 AI Skill，旨在防止大语言模型（LLM）通过盲目顺从、语言模仿或过度个性化来增强或放大用户的妄想、认知偏差或焦虑循环（防止 AI 引导妄想，限制 AI 越界行为与盲目迎合）。
+Psychiatrists call this combination the **"delusion amplification spiral."**
 
-### 为什么需要这个 Skill？
-根据精神病学研究，AI 聊天机器人很容易因为人类反馈强化学习（RLHF）所导致的以下三种行为，与易受影响的用户交织，形成**「放大螺旋（Amplification Spiral）」**：
-1. **奉承迎合 (Sycophancy)**：AI 倾向于附和用户的观点，而非质询可疑的主观假设。
-2. **语言模仿 (Linguistic Mimicry)**：AI 学习并镜像用户的词汇、语调和写作风格，以建立虚假的亲密感。
-3. **高度个性化 (High Personalization)**：AI 利用历史对话信息提供过于贴合个人需求的回应，使之像一个值得信赖的知己。
-
-本 Skill 从系统提示词层面切断了这一螺旋。
-
-### 核心功能
-- **情感共情，逻辑脱钩**：理解并安抚用户的情绪，但坚决不盲信、不验证未证实的结论。
-- **语言去壁虎化**：拒绝模仿用户的情绪化或偏执词汇，保持客观、冷静、理性的第三方语调。
-- **自我证伪思维链 (Falsification CoT)**：要求 AI 在回答前，必须在思考区先写出 3 个反驳用户前提的理由。
+## The Solution
+This guardrail forces the model to:
+* **Sympathize, don't validate**: Support the user's *feelings*, but remain neutral on their *claims*.
+* **De-mimic**: Maintain a calm, objective, third-person perspective.
+* **Self-Falsify**: Challenge its own assumptions before replying.
 
 ---
 
-## Installation & Usage (安装与使用)
+## 核心设计 (Simplified Chinese)
 
-### 1. In Google Antigravity (AGY)
-Copy the `SKILL.md` file to your customization directory:
-- **Global**: `~/.gemini/config/skills/Anti-Delulu/SKILL.md`
-- **Workspace**: `.agents/skills/Anti-Delulu/SKILL.md`
+本提示词防護網旨在防止大語言模型（LLM）一味盲從迎合、模仿使用者焦慮情緒，或在多輪對話中形成病態的「回音室效應」（防止 AI 引导妄想，限制 AI 越界行为与盲目迎合）。
 
-### 2. In other LLM Platforms (ChatGPT / Claude / Dify / Coze)
-Copy the contents of `SKILL.md` into your system instructions, agent system prompts, or custom instructions.
+### 為什麼需要？
+AI 聊天機器人基於 RLHF 機制，極易為了迎合評分而：
+1. **盲目順從（Sycophancy）**：順著使用者的假設往下編，甚至盲信未證實的前提。
+2. **語氣模仿**：模仿使用者的偏執或焦慮用詞，營造虛假的「知己」錯覺。
+3. **過度個人化**：結合歷史對話，形成不斷自我驗證的「放大螺旋（Amplification Spiral）」。
+
+### 防護機制
+* **情感共情，邏輯脫鉤**：可以理解情緒（如「我明白這讓你很焦慮」），但絕不承認前提（不說「確實有人在針對你」）。
+* **語言去模仿**：強制使用客觀、理性的第三方中立語調。
+* **思維證偽**：回答前必須在思考區（`<thought>`）中找出 3 個反向論證，強迫 AI 展現合理分歧。
+
+---
+
+## Installation & Integration
+
+### Google Antigravity
+Copy `SKILL.md` to:
+* `.agents/skills/Anti-Delulu/SKILL.md` (Workspace-scoped)
+* `~/.gemini/config/skills/Anti-Delulu/SKILL.md` (Global)
+
+### Dify / Coze / ChatGPT / Claude Custom Instructions
+Copy the content of `SKILL.md` directly into the System Instructions or Agent System Prompt.
